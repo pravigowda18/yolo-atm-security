@@ -1,0 +1,8 @@
+path: HelmetMaskDataset
+train: images/train
+val: images/val
+
+names:
+  0: no_msk_hlmt
+  1: mask
+  2: helmet

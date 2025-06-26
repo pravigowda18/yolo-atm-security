@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam View - ATM Security Project</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/web.css">
+
+</head>
+
+<body class="text-gray-800">
+
+    <!-- =========== Header / Navigation Bar =========== -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Website Brand/Name -->
+            <a href="#" class="text-2xl font-bold text-cyan-600">PRAVEEN</a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="praveen_atm_security_website.html"
+                    class="text-gray-600 hover:text-cyan-600 transition duration-300">Home</a>
+                <a href="#" class="text-cyan-600 font-semibold border-b-2 border-cyan-600 pb-1">Webcam View</a>
+                <a href="/video" class="text-gray-600 hover:text-cyan-600 transition duration-300">Video View</a>
+                <a href="/#about" class="text-gray-600 hover:text-cyan-600 transition duration-300">About</a>
+                <a href="/#contact" class="text-gray-600 hover:text-cyan-600 transition duration-300">Contact</a>
+            </div>
+
+            <!-- Profile Icon -->
+            <div class="flex items-center">
+                <button id="profile-button"
+                    class="w-10 h-10 rounded-full bg-cyan-500 text-white flex items-center justify-center text-xl font-bold hover:bg-cyan-700 transition duration-300">
+                    <i class="ri-user-line"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========== User Profile Sidebar =========== -->
+    <aside id="profile-sidebar"
+        class="fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <!-- Sidebar content is identical to other pages -->
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-semibold">User Profile</h3>
+                <button id="close-sidebar-button" class="text-gray-500 hover:text-red-500 transition duration-300">
+                    <i class="ri-close-line text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <img src="https://placehold.co/100x100/06b6d4/ffffff?text=User" alt="User Profile Picture"
+                    class="w-24 h-24 rounded-full border-4 border-cyan-200 object-cover mb-4">
+                <h4 class="text-lg font-semibold">Praveen Kumar</h4>
+                <p class="text-sm text-gray-500">praveen@example.com</p>
+                <button
+                    class="mt-8 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 flex items-center justify-center space-x-2">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- =========== Main Content =========== -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+            <div class="flex items-center justify-center mb-4">
+                <div
+                    class="w-16 h-16 bg-cyan-500 text-white rounded-2xl flex items-center justify-center shadow-lg relative">
+                    <i class="ri-camera-lens-line text-4xl"></i>
+                    <div id="live-dot"
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white flex items-center justify-center live-indicator hidden">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Live Detection</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                Real-time helmet and mask detection using your webcam.
+            </p>
+        </div>
+
+        <div id='vid' class="w-full h-full bg-green-600 flex items-center flex-col">
+            <div class=" w-fit h-full py-4 px-4 m-5">
+                <h1 id="prmn" class="text-2xl font-black">Premission</h1>
+            </div>
+            <div class="w-fit h-full py-4 px-4 bg-white mb-5 rounded-xl">
+                <div id="video-container"
+                    class="relative w-[640px] h-[480px] border-solid border-4 bg-gray-800 rounded-xl">
+                    <div id="video-placeholder"
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+                        <i class="ri-video-off-line text-9xl opacity-20"></i>
+                        <p class="mt-4 text-2xl opacity-20">Webcam is off</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex items-center justify-center space-x-4">
+                    <button id="start-btn"
+                        class="w-40 flex items-center justify-center py-3 px-6 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition duration-300">
+                        <i class="ri-play-fill mr-2 text-xl"></i>
+                        Start
+                    </button>
+                    <button id="stop-btn"
+                        class="w-40 flex items-center justify-center py-3 px-6 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                        disabled>
+                        <i class="ri-stop-fill mr-2 text-xl"></i>
+                        Stop
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </main>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileButton = document.getElementById('profile-button');
+            const sidebar = document.getElementById('profile-sidebar');
+            const closeButton = document.getElementById('close-sidebar-button');
+            const overlay = document.getElementById('sidebar-overlay');
+            const container = document.getElementById('video-container');
+            const start = document.getElementById('start-btn')
+            const stop = document.getElementById('stop-btn')
+            const Placeholder = document.getElementById('video-placeholder')
+            const livedot = document.getElementById('live-dot')
+            const vid = document.getElementById('vid')
+            const pr = document.getElementById('prmn')
+
+            let classPolling = null;
+
+
+            // Function to open the sidebar
+            function openSidebar() {
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            // Function to close the sidebar
+            function closeSidebar() {
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scrolling
+            }
+
+            function startStream() {
+                Placeholder.classList.add('hidden');
+                stop.disabled = false;
+                livedot.classList.remove('hidden');
+
+                const existing = document.getElementById('video-feed');
+                if (existing) {
+                    existing.remove();  // Remove previous stream if any
+                }
+
+                fetch('/start_stream', { method: 'POST' })
+                    .then(() => {
+                        const img = document.createElement('img');
+                        img.src = "/video_feed?" + new Date().getTime(); // Cache-busting
+                        img.id = "video-feed";
+                        img.width = 640;
+                        img.height = 480;
+                        container.appendChild(img);
+
+                        // Start polling only when streaming starts
+                        if (!classPolling) {
+                            classPolling = setInterval(fetchClass, 1000); // 1 second
+                        }
+                    });
+            }
+
+            function stopStream() {
+                Placeholder.classList.remove('hidden');
+                fetch('/stop_stream', { method: 'POST' })
+                    .then(() => {
+                        const img = document.getElementById('video-feed');
+                        if (img) {
+                            img.remove();
+                        }
+                    });
+
+                livedot.classList.add('hidden');
+                stop.disabled = true; // fixed typo from 'ture' to 'true'
+
+                // Stop polling
+                if (classPolling) {
+                    clearInterval(classPolling);
+                    classPolling = null;
+                }
+            }
+
+
+
+            function fetchClass() {
+                fetch('/get_class')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data || typeof data.class_id !== 'number') return;
+
+                        // Remove both classes before adding the new one
+                        vid.classList.remove('bg-red-600', 'bg-green-600');
+
+                        if (data.class_id === 1 || data.class_id === 2) {
+                            vid.classList.add('bg-red-600');
+                            prmn.textContent = "Premission not allowed"
+                        } else {
+                            vid.classList.add('bg-green-600');
+                            prmn.textContent = "Premission allowed"
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching class:', error);
+                    });
+            }
+
+
+      
+
+
+
+            // Event listeners
+            profileButton.addEventListener('click', openSidebar);
+            closeButton.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+            start.addEventListener('click', startStream)
+            stop.addEventListener('click', stopStream)
+
+
+            // Close sidebar with Escape key
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && !sidebar.classList.contains('translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

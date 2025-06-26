@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+*.DS_Store
+videos/
+*.pt
+.vscode/
+.csv
+.yaml

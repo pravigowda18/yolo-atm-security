@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praveen - ATM Security Project</title>
+    
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/home.css">
+
+
+</head>
+<body class="text-gray-800">
+
+    <!-- =========== Header / Navigation Bar =========== -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Website Brand/Name -->
+            <a href="#" class="text-2xl font-bold text-blue-700">PRAVEEN</a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="text-gray-600 hover:text-blue-700 transition duration-300">Home</a>
+                <a href="/webcam" class="text-gray-600 hover:text-blue-700 transition duration-300">Live Web Cam</a>
+                <a href="/video" class="text-gray-600 hover:text-blue-700 transition duration-300">Video View</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-700 transition duration-300">About</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-700 transition duration-300">Contact</a>
+            </div>
+
+            <!-- Profile Icon -->
+            <div class="flex items-center">
+                 <button id="profile-button" class="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xl font-bold hover:bg-indigo-700 transition duration-300">
+                    <i class="ri-user-line"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========== User Profile Sidebar =========== -->
+    <aside id="profile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6">
+            <!-- Sidebar Header -->
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-semibold">User Profile</h3>
+                <button id="close-sidebar-button" class="text-gray-500 hover:text-red-500 transition duration-300">
+                    <i class="ri-close-line text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="flex flex-col items-center text-center">
+                <img src="https://placehold.co/100x100/6366f1/ffffff?text=User" alt="User Profile Picture" class="w-24 h-24 rounded-full border-4 border-indigo-200 object-cover mb-4">
+                <h4 class="text-lg font-semibold">Praveen S</h4>
+                <p class="text-sm text-gray-500">pravisb0002@gamil.com</p>
+                <p class="text-sm text-gray-500">+919740654075</p>
+
+                <!-- Logout Button -->
+                <button class="mt-8 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 flex items-center justify-center space-x-2">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+    <!-- Overlay for sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+
+    <!-- =========== Main Content =========== -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Headline Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Helmet and Mask Detection for 
+                <span class="text-blue-700">ATM Security</span>
+            </h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                An innovative solution to enhance the security of Automated Teller Machines by identifying individuals concealing their identity.
+            </p>
+        </section>
+
+        <!-- Grid Section for Webcam/Video View -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Webcam Test Card -->
+                <a href="/webcam" id="webcam-view" class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                    <div class="flex items-center space-x-6">
+                        <i class="ri-camera-lens-line text-5xl text-indigo-500"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Live Cam Test</h3>
+                            <p class="text-gray-600">Initiate a live webcam feed to test real-time mask and helmet detection.</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Video View Card -->
+                <a href="/video" id="video-view" class="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                     <div class="flex items-center space-x-6">
+                        <i class="ri-video-line text-5xl text-teal-500"></i>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Test On Video</h3>
+                            <p class="text-gray-600">Upload and process a video file to analyze for covered faces and potential threats.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Problem Statement Section -->
+        <section id="about" class="bg-white p-8 md:p-12 rounded-xl shadow-lg mb-16">
+            <h2 class="text-3xl font-bold text-center mb-6">Problem Statement</h2>
+            <p class="text-gray-700 leading-relaxed max-w-4xl mx-auto text-center mb-10">
+                Thefts and fraudulent activities at ATMs are a significant concern for financial institutions and customers alike. Criminals often exploit the anonymity provided by wearing helmets or masks to avoid identification by security cameras. This makes it challenging for law enforcement to track perpetrators and for banks to prevent unauthorized transactions, leading to financial losses and a decline in customer trust.
+            </p>
+            <!-- Image Placeholders -->
+            <div class="flex  justify-center gap-6">
+                <div class="w-1/3 h-80 bg-gray-600 object-cover rounded shadow-xl overflow-hidden">
+                    <img src="../static/images/atm1.jpeg" alt="ATM Security Camera View" class="rounded-lg shadow-md w-full h-full object-cover">
+                </div>
+                <div class="w-1/3 h-80 bg-gray-600  rounded shadow-xl overflow-hidden">
+                    <img src="../static/images/atm4.jpeg" alt="Person wearing a mask" class="rounded-lg shadow-md w-full h-full object-cover">
+                </div>
+                <div class="w-1/3 h-80 bg-gray-600 object-cover rounded shadow-xl overflow-hidden">
+                    <img src="../static/images/atm3.jpg" alt="Person wearing a helmet" class="rounded-lg shadow-md">
+                </div>  
+            </div>
+        </section>
+
+        <!-- Objective Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Objective</h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="flex items-start p-6 bg-white rounded-xl shadow-md">
+                    <i class="ri-alert-line text-3xl text-yellow-500 mr-4 mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold text-lg">Real-time Alert System</h4>
+                        <p class="text-gray-600">Instantly detect a person wearing a mask or helmet as they enter the ATM premises and trigger an immediate alert to the central security system and local authorities.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start p-6 bg-white rounded-xl shadow-md">
+                    <i class="ri-lock-2-line text-3xl text-red-500 mr-4 mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold text-lg">Transaction Blocking</h4>
+                        <p class="text-gray-600">Temporarily disable the ATM's functionality or block transaction initiation if a concealed face is detected, preventing potential fraud before it happens.</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-6 bg-white rounded-xl shadow-md">
+                    <i class="ri-vidicon-line text-3xl text-blue-500 mr-4 mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold text-lg">Evidence Capture</h4>
+                        <p class="text-gray-600">Automatically capture high-resolution images and video clips of the suspect, which can be used as crucial evidence for investigation purposes.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start p-6 bg-white rounded-xl shadow-md">
+                    <i class="ri-message-2-line text-3xl text-green-500 mr-4 mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold text-lg">Audio Warning System</h4>
+                        <p class="text-gray-600">Issue an automated audio warning within the ATM kiosk, requesting the individual to remove their face covering to proceed, acting as a deterrent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========== Footer / Contact Information =========== -->
+    <footer id="contact" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">Feel free to reach out for collaborations or if you have any questions about the project.</p>
+            <div class="flex justify-center items-center space-x-6">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pravisb0002@gmail.com" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-3xl">
+                    <i class="ri-mail-line"></i>
+                </a>
+                 <a href="https://github.com/pravigowda18" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-3xl">
+                    <i class="ri-github-fill"></i>
+                </a>
+                 <a href="https://linkedin.com/in/praveen-s-72692b291" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-3xl">
+                    <i class="ri-linkedin-box-fill"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-3xl">
+                    <i class="ri-global-line"></i>
+                </a>
+            </div>
+             <div class="mt-12 border-t border-gray-700 pt-6">
+                <p class="text-gray-500">&copy; 2024 Praveen. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========== JavaScript for Sidebar =========== -->
+   <script src="../static/js/home.js"></script>
+</body>
+</html>

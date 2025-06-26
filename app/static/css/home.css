@@ -1,0 +1,24 @@
+ 
+/* Use Inter as the default font */
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: linear-gradient(-225deg, #5271C4 0%, #B19FFF 48%, #ECA1FE 100%)
+}
+/* Style for smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
