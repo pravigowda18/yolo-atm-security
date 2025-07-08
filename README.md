@@ -52,7 +52,7 @@ The system integrates with ATM transaction workflows, actively denying masked/he
 
 ## 🖥️ Screenshots
 
-20250705-1059-00.4306503.mp4
+▶️ [Click here to watch the demo video](20250705-1059-00.4306503.mp4)
 
 ---
 
