@@ -52,7 +52,7 @@ The system integrates with ATM transaction workflows, actively denying masked/he
 
 ## 🖥️ Screenshots
 
-> _Add images or GIFs here showing the live detection interface, block alerts, and YOLO detection boxes._
+20250705-1059-00.4306503.mp4
 
 ---
 
